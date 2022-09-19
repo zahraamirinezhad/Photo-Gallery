@@ -1,0 +1,22 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+
+  .mode {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    border: 1px solid gainsboro;
+
+    &.light_mode {
+      background-color: white;
+    }
+
+    &.dark_mode {
+      background-color: black;
+    }
+  }
+}

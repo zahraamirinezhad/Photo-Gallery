@@ -1,6 +1,7 @@
 import classes from './Progressbar.module.scss'
 import useStorage from '../../hooks/useStorage'
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 const Progressbar = ({ file, setFile }) => {
   const { progress, url } = useStorage(file)
@@ -13,10 +14,11 @@ const Progressbar = ({ file, setFile }) => {
 
   return (
     <div className={classes.progressbarContainer}>
-      <div
+      <motion.div
         className={classes.progressbar}
-        style={{ width: `${progress}%` }}
-      ></div>
+        initial={{ width: 0 }}
+        animate={{ width: `${progress}%` }}
+      ></motion.div>
     </div>
   )
 }

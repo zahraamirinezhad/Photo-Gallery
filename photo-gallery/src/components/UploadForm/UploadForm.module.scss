@@ -1,8 +1,27 @@
 .uploadForm {
   width: 100%;
 
-  .fileInput {
-    margin: auto;
+  .addFile {
+    position: relative;
+    width: fit-content;
     display: block;
+    margin: auto;
+
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+
+    input {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
   }
 }

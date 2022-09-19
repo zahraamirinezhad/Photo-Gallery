@@ -1,7 +1,12 @@
 import './App.scss'
+import Home from './components/Home/Home.jsx'
 
 function App() {
-  return <div className="App">Hello World !!!</div>
+  return (
+    <div>
+      <Home />
+    </div>
+  )
 }
 
 export default App

@@ -3,7 +3,7 @@ import useStorage from '../../hooks/useStorage'
 import { useEffect } from 'react'
 
 const Progressbar = ({ file, setFile }) => {
-  const { url, progress } = useStorage(file)
+  const { progress, url } = useStorage(file)
 
   useEffect(() => {
     if (url) {

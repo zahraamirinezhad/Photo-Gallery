@@ -11,28 +11,29 @@ const useStorage = (file) => {
   const [url, setUrl] = useState('')
 
   useEffect(() => {
-    const storageRef = projectStorage.ref(file.name)
-    const collectionRef = projectFirestore.collection('images')
+    if (file) {
+      const storageRef = projectStorage.ref(file.name)
+      const collectionRef = projectFirestore.collection('images')
 
-    storageRef.put(file).on(
-      'state_changed',
-      (snap) => {
-        setProgress((snap.bytesTransferred / snap.totalBytes) * 100)
-      },
-      (err) => {
-        setError(err)
-      },
-      async () => {
-        const URL = await storageRef.getDownloadURL()
-        const createdAt = timestamp()
-
-        collectionRef.add({ URL, createdAt })
-        setUrl(URL)
-      },
-    )
+      storageRef.put(file).on(
+        'state_changed',
+        (snap) => {
+          setProgress((snap.bytesTransferred / snap.totalBytes) * 100)
+        },
+        (err) => {
+          setError(err)
+        },
+        async () => {
+          const URL = await storageRef.getDownloadURL()
+          const createdAt = timestamp()
+          collectionRef.add({ URL, createdAt })
+          setUrl(URL)
+        },
+      )
+    }
   }, [file])
 
-  return { progress, error, url }
+  return { progress, url, error }
 }
 
 export default useStorage
